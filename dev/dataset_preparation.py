@@ -54,7 +54,7 @@ for doc in ds:
     collected_enough_chars = shard_characters >= chars_per_shard
     docs_multiple_of_row_group_size = len(shard_docs) % row_group_size == 0
     if collected_enough_chars and docs_multiple_of_row_group_size: # approx ~100MB of text - compressed
-        shard_path = os.path.join(output_dir, f"shard_{shard_index:0.5d}.parquet")
+        shard_path = os.path.join(output_dir, f"shard_{shard_index:05d}.parquet")
         shard_table = pa.Table.from_pydict({"text": shard_docs})
         pq.write_table(
             table=shard_table,
@@ -70,9 +70,9 @@ for doc in ds:
         t0 = t1
         total_docs_processed += len(shard_docs)
         total_time_spent += dt
-        remanining_docs = ndocs - total_docs_processed
+        remaining_docs = ndocs - total_docs_processed
         avg_time_per_doc = total_time_spent / total_docs_processed
-        remaining_time = remanining_docs * avg_time_per_doc
+        remaining_time = remaining_docs * avg_time_per_doc
         remaining_time_hours = remaining_time / 3600
         print(f"Wrote {shard_path}. #documents: {len(shard_docs)} | #characters: {shard_characters} | time: {dt:.2f}s | remaining time: {remaining_time_hours:.2f}h")
         shard_docs = []
