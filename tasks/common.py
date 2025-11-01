@@ -132,14 +132,28 @@ def render_mc(question, letters, choices):
 if __name__ == '__main__':
     
     # very lightweight test of slicing
-    from tasks.mmlu import MMLU
+    # from tasks.mmlu import MMLU
     
-    ds = MMLU(subset="auxiliary_train", split="train")
+    # ds = MMLU(subset="auxiliary_train", split="train")
+    # print(f"Length of MMLU: {len(ds)}\n")
+    # ex = ds[5]
+    # print(f"5th example is: {ex}")
+
+    # ds = MMLU(subset="auxiliary_train", split="train", start=5, stop=10)
+    # print("\nLength of sliced MMLU[5:10]: ", len(ds))
+    # print("\n0th example of sliced MMLU: ", ds[0])
+
+    # print("\nThey match: ", ex == ds[0])
+
+    # print("\n10th Example of the sliced MMLU for viz: ", ds.get_example(10))
+
+    from tasks.gsm8k import GSM8K
+    ds = GSM8K(subset="main", split="train")
     print(f"Length of MMLU: {len(ds)}\n")
     ex = ds[5]
     print(f"5th example is: {ex}")
 
-    ds = MMLU(subset="auxiliary_train", split="train", start=5, stop=10)
+    ds = GSM8K(subset="main", split="train", start=5, stop=10)
     print("\nLength of sliced MMLU[5:10]: ", len(ds))
     print("\n0th example of sliced MMLU: ", ds[0])
 
