@@ -149,27 +149,27 @@ if __name__ == '__main__':
 
     # from tasks.gsm8k import GSM8K
     # ds = GSM8K(subset="main", split="train")
-    # print(f"Length of MMLU: {len(ds)}\n")
+    # print(f"Length of GSM8K: {len(ds)}\n")
     # ex = ds[5]
     # print(f"5th example is: {ex}")
 
     # ds = GSM8K(subset="main", split="train", start=5, stop=10)
-    # print("\nLength of sliced MMLU[5:10]: ", len(ds))
-    # print("\n0th example of sliced MMLU: ", ds[0])
+    # print("\nLength of sliced GSM8K[5:10]: ", len(ds))
+    # print("\n0th example of sliced GSM8K: ", ds[0])
 
     # print("\nThey match: ", ex == ds[0])
 
-    # print("\n10th Example of the sliced MMLU for viz: ", ds.get_example(10))
+    # print("\n10th Example of the sliced GSM8K for viz: ", ds.get_example(10))
 
     # from tasks.arc import ARC
     # ds = ARC(subset="ARC-Easy", split="train")
-    # print(f"Length of MMLU: {len(ds)}")
+    # print(f"Length of ARC: {len(ds)}")
     # ex = ds[5]
     # print(f"5th example is: {ex}")
 
     # ds = ARC(subset="ARC-Easy", split="train", start=5, stop=10)
-    # print("Length of sliced MMLU[5:10]: ", len(ds))
-    # print("0th example of sliced MMLU: ", ds[0])
+    # print("Length of sliced ARC[5:10]: ", len(ds))
+    # print("0th example of sliced ARC: ", ds[0])
 
     # print("They match: ", ex == ds[0])
 
@@ -177,28 +177,28 @@ if __name__ == '__main__':
 
     # from tasks.humaneval import HumanEval
     # ds = HumanEval(subset="main", split="train")
-    # print(f"Length of MMLU: {len(ds)}\n")
+    # print(f"Length of HumanEval: {len(ds)}\n")
     # ex = ds[5]
     # print(f"5th example is: {ex}")
 
     # ds = HumanEval(subset="main", split="train", start=5, stop=10)
-    # print("\nLength of sliced MMLU[5:10]: ", len(ds))
-    # print("\n0th example of sliced MMLU: ", ds[0])
+    # print("\nLength of sliced HumanEval[5:10]: ", len(ds))
+    # print("\n0th example of sliced HumanEval: ", ds[0])
 
     # print("\nThey match: ", ex == ds[0])
 
-    # print("\n10th Example of the sliced MMLU for viz: ", ds.get_example(10))
+    # print("\n10th Example of the sliced HumanEval for viz: ", ds.get_example(10))
 
-    from tasks.smoltalk import SmolTalk
-    ds = SmolTalk(split="test")
-    print(f"Length of SmolTalk: {len(ds)}\n")
-    ex = ds[5]
-    print(f"5th example is: {ex}")
+    # from tasks.smoltalk import SmolTalk
+    # ds = SmolTalk(split="test")
+    # print(f"Length of SmolTalk: {len(ds)}\n")
+    # ex = ds[5]
+    # print(f"5th example is: {ex}")
 
-    ds = SmolTalk(split="test", start=5, stop=10)
-    print("\nLength of sliced SmolTalk[5:10]: ", len(ds))
-    print("\n0th example of sliced SmolTalk: ", ds[0])
+    # ds = SmolTalk(split="test", start=5, stop=10)
+    # print("\nLength of sliced SmolTalk[5:10]: ", len(ds))
+    # print("\n0th example of sliced SmolTalk: ", ds[0])
 
-    print("\nThey match: ", ex == ds[0])
+    # print("\nThey match: ", ex == ds[0])
 
-    print("\n10th Example of the sliced SmolTalk for viz: ", ds.get_example(10))
+    # print("\n10th Example of the sliced SmolTalk for viz: ", ds.get_example(10))
