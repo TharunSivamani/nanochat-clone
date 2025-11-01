@@ -147,16 +147,31 @@ if __name__ == '__main__':
 
     # print("\n10th Example of the sliced MMLU for viz: ", ds.get_example(10))
 
-    from tasks.gsm8k import GSM8K
-    ds = GSM8K(subset="main", split="train")
-    print(f"Length of MMLU: {len(ds)}\n")
+    # from tasks.gsm8k import GSM8K
+    # ds = GSM8K(subset="main", split="train")
+    # print(f"Length of MMLU: {len(ds)}\n")
+    # ex = ds[5]
+    # print(f"5th example is: {ex}")
+
+    # ds = GSM8K(subset="main", split="train", start=5, stop=10)
+    # print("\nLength of sliced MMLU[5:10]: ", len(ds))
+    # print("\n0th example of sliced MMLU: ", ds[0])
+
+    # print("\nThey match: ", ex == ds[0])
+
+    # print("\n10th Example of the sliced MMLU for viz: ", ds.get_example(10))
+
+    from tasks.arc import ARC
+
+    ds = ARC(subset="ARC-Easy", split="train")
+    print(f"Length of MMLU: {len(ds)}")
     ex = ds[5]
     print(f"5th example is: {ex}")
 
-    ds = GSM8K(subset="main", split="train", start=5, stop=10)
-    print("\nLength of sliced MMLU[5:10]: ", len(ds))
-    print("\n0th example of sliced MMLU: ", ds[0])
+    ds = ARC(subset="ARC-Easy", split="train", start=5, stop=10)
+    print("Length of sliced MMLU[5:10]: ", len(ds))
+    print("0th example of sliced MMLU: ", ds[0])
 
-    print("\nThey match: ", ex == ds[0])
+    print("They match: ", ex == ds[0])
 
-    print("\n10th Example of the sliced MMLU for viz: ", ds.get_example(10))
+    print(ds.get_example(10))
