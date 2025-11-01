@@ -189,3 +189,16 @@ if __name__ == '__main__':
 
     # print("\n10th Example of the sliced MMLU for viz: ", ds.get_example(10))
 
+    from tasks.smoltalk import SmolTalk
+    ds = SmolTalk(split="test")
+    print(f"Length of SmolTalk: {len(ds)}\n")
+    ex = ds[5]
+    print(f"5th example is: {ex}")
+
+    ds = SmolTalk(split="test", start=5, stop=10)
+    print("\nLength of sliced SmolTalk[5:10]: ", len(ds))
+    print("\n0th example of sliced SmolTalk: ", ds[0])
+
+    print("\nThey match: ", ex == ds[0])
+
+    print("\n10th Example of the sliced SmolTalk for viz: ", ds.get_example(10))
