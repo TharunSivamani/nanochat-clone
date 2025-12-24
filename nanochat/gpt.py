@@ -8,7 +8,7 @@ Notable features:
 - norm after token embedding
 - no learnable params in rmsnorm
 - no bias in linear layers
-- Grouped-Query Attention (MQA) support for more efficient inference
+- Grouped-Query Attention (GQA) support for more efficient inference
 """
 
 import math
@@ -139,6 +139,7 @@ class Block(nn.Module):
 class GPT(nn.Module):
     def __init__(self, config):
         super().__init__()
+        self.config = config
         self.transformer = nn.ModuleDict({
             "wte": nn.Embedding(config.vocab_size, config.n_embd),
             "h": nn.ModuleList([Block(config, layer_idx) for layer_idx in range(config.n_layer)]),
