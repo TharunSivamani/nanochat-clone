@@ -63,7 +63,7 @@ class HuggingFaceTokenizer:
         # Configure the HuggingFace Tokenizer
         tokenizer = HFTokenizer(
             BPE(
-                byte_fallback=False,
+                byte_fallback=True, # needed!
                 unk_token=None,
                 fuse_unk=False
             )
@@ -182,14 +182,14 @@ class RustBPETokenizer:
             mergeable_ranks=mergeable_ranks, # dict[bytes, int] (token bytes -> merge priority rank)
             special_tokens=special_tokens, # dict[str, int] (special token name -> token id)
         )
-        return cls(enc, "|<bos>|")
+        return cls(enc, "<|bos|>")
     
     @classmethod
     def from_directory(cls, tokenizer_dir):
         pickle_path = os.path.join(tokenizer_dir, "tokenizer.pkl")
         with open(pickle_path, "rb") as f:
             enc = pickle.load(f)
-        return cls(enc, "|<bos>|")
+        return cls(enc, "<|bos|>")
     
     @classmethod
     def from_pretrained(cls, tiktoken_name):
@@ -287,7 +287,7 @@ class RustBPETokenizer:
         assert len(messages) >= 1, f"Conversation has less than 1 message: {messages}"
 
         # fetch all the special tokens we need
-        bos = self.get_bos_token_id
+        bos = self.get_bos_token_id()
         user_start, user_end = self.encode_special("<|user_start|>"), self.encode_special("<|user_end|>")
         assistant_start, assistant_end = self.encode_special("<|assistant_start|>"), self.encode_special("<|assistant_end|>")
         python_start, python_end = self.encode_special("<|python_start|>"), self.encode_special("<|python_end|>")
@@ -392,7 +392,7 @@ def get_tokenizer():
 def get_token_bytes(device="cpu"):
     import torch
     from nanochat.common import get_base_dir
-    base_dir = get_base_dir
+    base_dir = get_base_dir()
     tokenizer_dir = os.path.join(base_dir, "tokenizer")
     token_bytes_path = os.path.join(tokenizer_dir, "token_bytes.pt")
     assert os.path.exists(token_bytes_path), f"Token bytes not found at {token_bytes_path}? It gets written by tok_train.py"
